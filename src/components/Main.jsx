@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import IngredientsForm from './IngredientsForm';
 
 export default function Main() {
   const [ingredients, setIngredients] = useState([]);
@@ -20,19 +21,8 @@ export default function Main() {
   }
   return (
     <main className="py-[70px] mx-auto flex flex-col max-w-[600px] px-[10px] gap-12">
-      <form className="w-full flex items-center justify-center gap-3" onSubmit={submitForm}>
-        <input
-          placeholder="e.g. oregano"
-          className="w-full flex-1 h-full border border-solid border-[#D1D5DB] rounded-md py-[9px] px-[13px] shadow text-[14px] focus-visible:outline-blue-400"
-          aria-label="Add ingredient"
-          name="ingredient"
-        />
-        <button className="w-max h-full flex items-center px-[15px] text-white rounded-md py-[9px]  bg-black text-[14px] focus-visible:outline-blue-400 sm:px-[35px]">
-          <div>
-            + Add<span className="hidden sm:inline"> ingredient</span>
-          </div>
-        </button>
-      </form>
+      <IngredientsForm submitForm={submitForm} />
+
       {!!ingredients.length && (
         <div className="flex flex-col gap-12 py-5">
           <div className="flex flex-col gap-6">
@@ -50,7 +40,7 @@ export default function Main() {
         </div>
         <div className="flex items-end">
           <button
-            className="px-3 py-2 bg-[#D17557] rounded-lg text-white text-sm focus-visible:outline-blue-400"
+            className="px-3 py-2 bg-[#D17557] rounded-lg text-white text-sm focus-visible:outline-blue-400 hover:bg-[#D17557]/85"
             onClick={handleRecipeShown}
           >
             Get a recipe
